@@ -1,0 +1,14 @@
+# Configuración de despliegue en Netlify para el Frontend (React + Vite)
+[build]
+  base = "frontend"
+  publish = "dist"
+  command = "npm run build"
+
+# Redirección SPA para soportar rutas de cliente en React
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[build.environment]
+  NODE_VERSION = "20"
