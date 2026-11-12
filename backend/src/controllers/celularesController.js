@@ -338,11 +338,11 @@ export async function getMarcas(req, res, next) {
       ORDER BY marca ASC;
     `;
     const { rows } = await pool.query(query);
-    const marcas = rows.map((r) => r.marca);
+    const marcasUnicas = Array.from(new Set(rows.map((r) => r.marca).filter(Boolean))).sort((a, b) => a.localeCompare(b));
 
     res.json({
       exito: true,
-      datos: marcas
+      datos: marcasUnicas
     });
   } catch (error) {
     next(error);

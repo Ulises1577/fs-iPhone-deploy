@@ -10,7 +10,9 @@ export default function FilterBar({
   alResetearFiltros,
   totalResultados
 }) {
-  const opcionesMarcas = ['Todas', ...marcas];
+  // Asegura que las marcas sean estrictamente únicas y ordenadas
+  const marcasUnicas = Array.from(new Set(marcas.filter(Boolean))).sort((a, b) => a.localeCompare(b));
+  const opcionesMarcas = ['Todas', ...marcasUnicas];
 
   return (
     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">

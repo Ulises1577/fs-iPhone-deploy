@@ -79,7 +79,8 @@ export default function App() {
         obtenerEstadisticas()
       ]);
       if (marcasData && marcasData.length > 0) {
-        setMarcas(marcasData);
+        const deduplicadas = Array.from(new Set(marcasData.filter(Boolean))).sort((a, b) => a.localeCompare(b));
+        setMarcas(deduplicadas);
       }
       if (statsData) {
         setEstadisticas(statsData);
